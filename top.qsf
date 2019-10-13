@@ -65,6 +65,20 @@ set_global_assignment -name EDA_TEST_BENCH_FILE test.sv -section_id test
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
+set_global_assignment -name ENABLE_OCT_DONE OFF
+set_global_assignment -name ENABLE_CONFIGURATION_PINS OFF
+set_global_assignment -name ENABLE_BOOT_SEL_PIN OFF
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
+set_global_assignment -name SYSTEMVERILOG_FILE test.sv
+set_global_assignment -name SYSTEMVERILOG_FILE top.sv
+
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to adc_cs_n
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to adc_saddr
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key[0]
@@ -122,8 +136,6 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to dram_ras_n
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to dram_we_n
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to i2c_sclk
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to i2c_sdat
-set_instance_assignment -name AUTO_OPEN_DRAIN_PINS ON -to i2c_sclk
-set_instance_assignment -name AUTO_OPEN_DRAIN_PINS ON -to i2c_sdat
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to gpio_2_in[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to gpio_2[9]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to gpio_02
@@ -217,6 +229,10 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to g_sensor_int
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to adc_sclk
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to adc_sdat
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to clock_50
+
+set_instance_assignment -name AUTO_OPEN_DRAIN_PINS ON -to i2c_sclk
+set_instance_assignment -name AUTO_OPEN_DRAIN_PINS ON -to i2c_sdat
+
 set_location_assignment PIN_A10 -to adc_cs_n
 set_location_assignment PIN_B10 -to adc_saddr
 set_location_assignment PIN_B14 -to adc_sclk
@@ -367,16 +383,156 @@ set_location_assignment PIN_J15 -to key[0]
 set_location_assignment PIN_E1 -to key[1]
 set_location_assignment PIN_F1 -to i2c_sdat
 set_location_assignment PIN_F2 -to i2c_sclk
-set_global_assignment -name ENABLE_OCT_DONE OFF
-set_global_assignment -name ENABLE_CONFIGURATION_PINS OFF
-set_global_assignment -name ENABLE_BOOT_SEL_PIN OFF
-set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
-set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
-set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
-set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
-set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
-set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
-set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
-set_global_assignment -name SYSTEMVERILOG_FILE test.sv
-set_global_assignment -name SYSTEMVERILOG_FILE top.sv
+
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to adc_cs_n
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to adc_saddr
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to adc_sclk
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to adc_sdat
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to clock_50
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dip_switch[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dip_switch[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dip_switch[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dip_switch[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_addr[12]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_addr[11]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_addr[10]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_addr[9]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_addr[8]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_addr[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_addr[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_addr[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_addr[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_addr[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_addr[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_addr[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_addr[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_ba[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_ba[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_cas_n
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_cke
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_clk
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_cs_n
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_dq[15]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_dq[14]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_dq[13]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_dq[12]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_dq[11]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_dq[10]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_dq[9]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_dq[8]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_dq[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_dq[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_dq[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_dq[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_dq[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_dq[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_dq[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_dq[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_dqm[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_dqm[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_ras_n
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to dram_we_n
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to g_sensor_cs_n
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to g_sensor_int
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_0_in0
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_0_in1
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_00
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_1_in0
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_1_in1
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_01
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_2[12]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_2[11]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_2[10]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_2[9]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_2[8]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_2[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_2[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_2[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_2[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_2[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_2[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_2[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_2[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_2_in[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_2_in[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_2_in[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_02
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_03
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_04
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_05
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_06
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_07
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_08
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_09
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_010
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_011
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_012
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_013
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_014
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_015
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_016
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_017
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_018
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_019
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_020
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_021
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_022
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_023
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_024
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_025
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_026
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_027
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_028
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_029
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_030
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_031
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_032
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_033
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_10
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_11
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_12
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_13
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_14
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_15
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_16
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_17
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_18
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_19
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_110
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_111
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_112
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_113
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_114
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_115
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_116
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_117
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_118
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_119
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_120
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_121
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_122
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_123
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_124
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_125
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_126
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_127
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_128
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_129
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_130
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_131
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_132
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to gpio_133
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to led[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to led[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to led[2]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to led[3]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to led[4]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to led[5]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to led[6]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to led[7]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to key[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to key[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to i2c_sdat
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to i2c_sclk
+
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
