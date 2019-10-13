@@ -106,4 +106,97 @@ module top(
     input wire clock_50
 );
 
+    assign led = 'z;
+
+    assign dram_addr = 'z;
+    assign dram_dq = 'z;
+    assign dram_ba = 'z;
+    assign dram_dqm = 'z;
+    assign dram_ras_n = 'z;
+    assign dram_cas_n = 'z;
+    assign dram_cke = 'z;
+    assign dram_clk = 'z;
+    assign dram_we_n = 'z;
+    assign dram_cs_n = 1;
+
+    assign i2c_sclk = 'z;
+    assign i2c_sdat = 'z;
+
+    assign gpio_00 = 'z;
+    assign gpio_01 = 'z;
+    assign gpio_02 = 'z;
+    assign gpio_03 = 'z;
+    assign gpio_04 = 'z;
+    assign gpio_05 = 'z;
+    assign gpio_06 = 'z;
+    assign gpio_07 = 'z;
+    assign gpio_08 = 'z;
+    assign gpio_09 = 'z;
+    assign gpio_010 = 'z;
+    assign gpio_011 = 'z;
+    assign gpio_012 = 'z;
+    assign gpio_013 = 'z;
+    assign gpio_014 = 'z;
+    assign gpio_015 = 'z;
+    assign gpio_016 = 'z;
+    assign gpio_017 = 'z;
+    assign gpio_018 = 'z;
+    assign gpio_019 = 'z;
+    assign gpio_020 = 'z;
+    assign gpio_021 = 'z;
+    assign gpio_022 = 'z;
+    assign gpio_023 = 'z;
+    assign gpio_024 = 'z;
+    assign gpio_025 = 'z;
+    assign gpio_026 = 'z;
+    assign gpio_027 = 'z;
+    assign gpio_028 = 'z;
+    assign gpio_029 = 'z;
+    assign gpio_030 = 'z;
+    assign gpio_031 = 'z;
+    assign gpio_032 = 'z;
+    assign gpio_033 = 'z;
+    assign gpio_10 = 'z;
+    assign gpio_11 = 'z;
+    assign gpio_12 = 'z;
+    assign gpio_13 = 'z;
+    assign gpio_14 = 'z;
+    assign gpio_15 = 'z;
+    assign gpio_16 = 'z;
+    assign gpio_17 = 'z;
+    assign gpio_18 = 'z;
+    assign gpio_19 = 'z;
+    assign gpio_110 = 'z;
+    assign gpio_111 = 'z;
+    assign gpio_112 = 'z;
+    assign gpio_113 = 'z;
+    assign gpio_114 = 'z;
+    assign gpio_115 = 'z;
+    assign gpio_116 = 'z;
+    assign gpio_117 = 'z;
+    assign gpio_118 = 'z;
+    assign gpio_119 = 'z;
+    assign gpio_120 = 'z;
+    assign gpio_121 = 'z;
+    assign gpio_122 = 'z;
+    assign gpio_123 = 'z;
+    assign gpio_124 = 'z;
+    assign gpio_125 = 'z;
+    assign gpio_126 = 'z;
+    assign gpio_127 = 'z;
+    assign gpio_128 = 'z;
+    assign gpio_129 = 'z;
+    assign gpio_130 = 'z;
+    assign gpio_131 = 'z;
+    assign gpio_132 = 'z;
+    assign gpio_133 = 'z;
+
+    assign gpio_2 = 'z;
+
+    assign adc_cs_n = 1;
+    assign adc_saddr = 'z;
+    assign adc_sclk = 'z;
+
+    assign g_sensor_cs_n = 1;
+
 endmodule : top
