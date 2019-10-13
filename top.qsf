@@ -69,7 +69,6 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to adc_cs_n
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to adc_saddr
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led[7]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led[6]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led[5]
