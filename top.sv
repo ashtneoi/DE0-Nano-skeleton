@@ -106,7 +106,9 @@ module top(
     input wire clock_50
 );
 
-    assign led = 'z;
+    var bit [7:0] count = 0;
+
+    assign led = count;
 
     assign dram_addr = 'z;
     assign dram_dq = 'z;
@@ -198,5 +200,30 @@ module top(
     assign adc_sclk = 'z;
 
     assign g_sensor_cs_n = 1;
+
+    var bit down = 0;
+
+    always @(posedge clock_50) begin
+        if (down) begin
+            if (key == 2'b11) begin
+                down <= 0;
+            end
+        end else begin
+            unique case (key)
+                2'b00: begin
+                    down <= 1;
+                end
+                2'b01: begin
+                    down <= 1;
+                    count <= {count[6:0], 1'b1};
+                end
+                2'b10: begin
+                    down <= 1;
+                    count <= {count[6:0], 1'b0};
+                end
+                default: begin end
+            endcase
+        end
+    end
 
 endmodule : top
