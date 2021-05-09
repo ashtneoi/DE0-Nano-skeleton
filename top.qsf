@@ -81,8 +81,8 @@ set_global_assignment -name SYSTEMVERILOG_FILE top.sv
 
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to adc_cs_n
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to adc_saddr
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key_n[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to key_n[1]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led[7]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led[6]
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to led[5]
@@ -379,8 +379,8 @@ set_location_assignment PIN_D1 -to led[4]
 set_location_assignment PIN_F3 -to led[5]
 set_location_assignment PIN_B1 -to led[6]
 set_location_assignment PIN_L3 -to led[7]
-set_location_assignment PIN_J15 -to key[0]
-set_location_assignment PIN_E1 -to key[1]
+set_location_assignment PIN_J15 -to key_n[0]
+set_location_assignment PIN_E1 -to key_n[1]
 set_location_assignment PIN_F1 -to i2c_sdat
 set_location_assignment PIN_F2 -to i2c_sclk
 
@@ -530,8 +530,8 @@ set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to led[4]
 set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to led[5]
 set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to led[6]
 set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to led[7]
-set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to key[0]
-set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to key[1]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to key_n[0]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to key_n[1]
 set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to i2c_sdat
 set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to i2c_sclk
 

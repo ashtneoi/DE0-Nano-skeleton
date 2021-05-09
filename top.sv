@@ -1,5 +1,5 @@
 module top(
-    input wire [1:0] key,
+    input wire [1:0] key_n,
 
     output wire [7:0] led,
 
@@ -107,6 +107,7 @@ module top(
 );
 
     var bit [7:0] count = 0;
+    wire logic [1:0] key = ~key_n;
 
     assign led = count;
 
@@ -205,21 +206,21 @@ module top(
 
     always @(posedge clock_50) begin
         if (down) begin
-            if (key == 2'b11) begin
+            if (key == 2'b00) begin
                 down <= 0;
             end
         end else begin
             unique case (key)
-                2'b00: begin
+                2'b11: begin
                     down <= 1;
-                end
-                2'b01: begin
-                    down <= 1;
-                    count <= {count[6:0], 1'b1};
                 end
                 2'b10: begin
                     down <= 1;
                     count <= {count[6:0], 1'b0};
+                end
+                2'b01: begin
+                    down <= 1;
+                    count <= {count[6:0], 1'b1};
                 end
                 default: begin end
             endcase
