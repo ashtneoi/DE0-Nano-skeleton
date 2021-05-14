@@ -329,8 +329,8 @@ set_location_assignment PIN_F9 -to gpio_022
 set_location_assignment PIN_E9 -to gpio_023
 set_location_assignment PIN_C9 -to gpio_024
 set_location_assignment PIN_D9 -to gpio_025
-set_location_assignment EDGE_TOP -to gpio_026
-set_location_assignment EDGE_TOP -to gpio_027
+set_location_assignment PIN_E11 -to gpio_026
+set_location_assignment PIN_E10 -to gpio_027
 set_location_assignment PIN_C11 -to gpio_028
 set_location_assignment PIN_B11 -to gpio_029
 set_location_assignment PIN_A12 -to gpio_030
