@@ -106,11 +106,6 @@ module top(
     input wire clock_50
 );
 
-    var bit [7:0] count = 0;
-    wire logic [1:0] key = ~key_n;
-
-    assign led = count;
-
     assign dram_addr = 'z;
     assign dram_dq = 'z;
     assign dram_ba = 'z;
@@ -202,6 +197,22 @@ module top(
 
     assign g_sensor_cs_n = 1;
 
+    wire logic [1:0] key = ~key_n;
+
+    shifter sh(.key, .led, .clock_50);
+
+endmodule
+
+
+module shifter(
+    input wire [1:0] key,
+    output wire [7:0] led,
+    input wire clock_50
+);
+
+    var bit [7:0] count = 0;
+    assign led = count;
+
     var bit down = 0;
 
     always @(posedge clock_50) begin
@@ -227,4 +238,4 @@ module top(
         end
     end
 
-endmodule : top
+endmodule
